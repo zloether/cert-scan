@@ -11,13 +11,13 @@ You'll need to have Python installed. Start by downloading and installing the la
 ## Installation
 Download the latest version from GitHub using Git:
 ```
-git clone https://github.com/zloether/toolkit.git
+git clone https://github.com/zloether/cert-scan
 ```
-This will create a directory called *toolkit* and all the code will be in it.
+This will create a directory called *cert-scan* and all the code will be in it.
 
-Switch to the *toolkit* directory:
+Switch to the *cert-scan* directory:
 ```
-cd toolkit
+cd cert-scan
 ```
 
 Install the required packages:
@@ -26,4 +26,27 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-The scripts are all located in the `toolkit` directory
+The root signing certificate for the website your are trying to scan must be added to the `ca_chain.crt` file.
+
+
+```
+python cert-scan.py www.google.com
+Subject
+        C: US
+        ST: California
+        L: Mountain View
+        O: Google LLC
+        CN: www.google.com
+Version: 3
+Serial Number:  1975C725003848CCDCE48E924E39A29D
+Valid from:     Jun 11 12:41:09 2019 GMT
+Valid to:       Sep  3 12:21:00 2019 GMT
+SAN:
+        DNS: www.google.com
+OCSP:
+        http://ocsp.pki.goog/GTSGIAG3
+Issuer:
+        http://pki.goog/gsr2/GTSGIAG3.crt
+CRL:
+        http://crl.pki.goog/GTSGIAG3.crl
+```
