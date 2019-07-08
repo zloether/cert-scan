@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 
 ###############################################################################################
-# NAME: tls-scan.py
+# NAME: cert-scan.py
 # 
-# Website: 
+# Website: https://github.com/zloether/cert-scan
 #
-# Description: 
+# Description: Downloads and parses TLS/SSL (X.509) certificates 
 ###############################################################################################
 
 
@@ -24,8 +24,7 @@ from cryptography.hazmat.primitives import hashes
 # variables
 # -----------------------------------------------------------------------------
 default_port = 443
-globalsign = 'GlobalSignRootCA-R2.crt'
-digicert = 'DigiCertHighAssuranceEVRootCA.crt'
+ca_chain = 'ca_chain.crt'
 subject_elements = {
     'businessCategory': 'Category',
     'jurisdictionCountryName': 'Jurisdiction',
@@ -47,7 +46,7 @@ def connect(host, port=default_port):
     s = socket() # create socket
 
     # wrap socket
-    c = ssl.wrap_socket(s,cert_reqs=ssl.CERT_REQUIRED, ca_certs=digicert)
+    c = ssl.wrap_socket(s,cert_reqs=ssl.CERT_REQUIRED, ca_certs=ca_chain)
     
     # connect to host
     c.connect((host, port))
