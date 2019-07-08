@@ -15,9 +15,7 @@
 from socket import socket
 import ssl
 from sys import argv
-from cryptography import x509
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import hashes
+
 
 
 # -----------------------------------------------------------------------------
@@ -65,7 +63,7 @@ def connect(host, port=default_port):
     crl = j['crlDistributionPoints']
     
 
-    print('Subject')
+    print('Subject:')
     parse_subject(subject)
     print('Version: ' + str(version))
     print('Serial Number:\t' + str(serial))
@@ -82,7 +80,6 @@ def connect(host, port=default_port):
 
 
 
-
 # -----------------------------------------------------------------------------
 # parse subject
 # -----------------------------------------------------------------------------
@@ -94,14 +91,12 @@ def parse_subject(subject):
 
 
 
-
 # -----------------------------------------------------------------------------
 # parse san
 # -----------------------------------------------------------------------------
 def parse_san(san):
     for element, value in san:
         print('\t' + str(element) + ': ' + str(value))
-
 
 
 
@@ -129,5 +124,4 @@ if __name__ == "__main__":
     else:
         port = default_port
 
-    #connect(host, port)
     connect(host, port)

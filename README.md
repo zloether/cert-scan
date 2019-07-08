@@ -31,7 +31,7 @@ The root signing certificate for the website your are trying to scan must be add
 
 ```
 python cert-scan.py www.google.com
-Subject
+Subject:
         C: US
         ST: California
         L: Mountain View
