@@ -20,11 +20,6 @@ Switch to the *cert-scan* directory:
 cd cert-scan
 ```
 
-Install the required packages:
-```
-pip install -r requirements.txt
-```
-
 ## Usage
 The root signing certificate for the website your are trying to scan must be added to the `ca_chain.crt` file.
 
